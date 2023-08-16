@@ -20,6 +20,11 @@ public class Necropsia {
 		super();
 	}
 
+	public Necropsia(EstadoConserv estado, String tipoMorte) {
+		this.estado = estado;
+		this.tipoMorte = tipoMorte;
+	}
+
 	public long getId() {
 		return id;
 	}

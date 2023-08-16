@@ -16,6 +16,9 @@ public class ParteNecropsia {
 		super();
 	}
 
+	public ParteNecropsia(String avaliacao) {
+		this.avaliacao = avaliacao;
+	}
 
 	public String getAvaliacao() {
 		return avaliacao;

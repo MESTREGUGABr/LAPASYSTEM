@@ -11,7 +11,14 @@ public class Area {
 	private long id;
 	
 	private String descricao;
-	
+
+	public Area() {
+	}
+
+	public Area(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public long getId() {
 		return id;
 	}
