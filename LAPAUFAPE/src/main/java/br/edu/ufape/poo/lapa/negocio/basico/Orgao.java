@@ -10,6 +10,20 @@ public class Orgao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String descricao;
+	
+	@ManyToOne
+	private Area area;
+	
+	@OneToOne(mappedBy = "Orgao", cascade = CascadeType.ALL) 
+	private ExameHistopatologico exame;
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public Orgao() {
 		super();

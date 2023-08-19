@@ -2,27 +2,29 @@ package br.edu.ufape.poo.lapa.negocio.basico;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import br.edu.ufape.poo.lapa.dados.InterfaceColecaoNecropsia;
-import br.edu.ufape.poo.lapa.negocio.basico.Enum.EstadoConservacao.EstadoConserv;
+import br.edu.ufape.poo.lapa.negocio.basico.Enum.EstadoDeConservacao;
 
 @SpringBootTest
 public class InterfaceColecaoNecropsiaTeste {
 	
 	@Autowired
 	private InterfaceColecaoNecropsia ColecaoNecropsia;
-	EstadoConserv estado = EstadoConserv.PERFEITO;
-	
+	EstadoDeConservacao estado = EstadoDeConservacao.MEDIO;
+
 	@Test
 	void cadastroNecropsia() {
 		long qtdNecropsia = ColecaoNecropsia.count();
-		Necropsia nec = new Necropsia(estado,"Eutanasia");
+		
+		Date DataHoraNecropsia = new Date();
+		
+		Necropsia nec = new Necropsia(DataHoraNecropsia,estado,"Eutanasia");
 		ColecaoNecropsia.save(nec);
 		long qtdNecropsia1 = ColecaoNecropsia.count();
 		

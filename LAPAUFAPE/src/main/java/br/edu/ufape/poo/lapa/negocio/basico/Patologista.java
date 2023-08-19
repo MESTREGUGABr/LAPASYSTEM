@@ -10,6 +10,9 @@ public class Patologista extends Veterinario{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@ManyToOne
+	private Laudo laudo;
+	
 	public long getId() {
 		return id;
 	}
@@ -17,6 +20,7 @@ public class Patologista extends Veterinario{
 	public void setId(long id) {
 		this.id = id;
 	}
+	
 	
 	public Patologista(String nome, String email, String telefone, String crmv, String instituicao) {
 		super(nome, email, telefone, crmv, instituicao);

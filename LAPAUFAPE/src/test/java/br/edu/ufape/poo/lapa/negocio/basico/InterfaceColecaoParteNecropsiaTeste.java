@@ -17,7 +17,7 @@ public class InterfaceColecaoParteNecropsiaTeste {
 	@Test
 	void cadastroParteNecropsia() {
 		long qtdParteNecropsia= ColecaoParteNecropsia.count();
-		ParteNecropsia part = new ParteNecropsia("Caixa toracica");
+		ParteNecropsia part = new ParteNecropsia("Caixa Toracica");
 		ColecaoParteNecropsia.save(part);
 		long qtdParteNecropsia1 = ColecaoParteNecropsia.count();
 		

@@ -1,8 +1,9 @@
 package br.edu.ufape.poo.lapa.negocio.basico;
 
 import java.util.Date;
+import java.util.List;
 
-import br.edu.ufape.poo.lapa.negocio.basico.Enum.EstadoConservacao.EstadoConserv;
+import br.edu.ufape.poo.lapa.negocio.basico.Enum.EstadoDeConservacao;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,12 +13,29 @@ public class Necropsia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private Date dataHoraNecropsia;
-	private EstadoConserv estado;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date DataHoraNecropsia;
+	private EstadoDeConservacao estado;
 	private String tipoMorte;
+	
+	@OneToMany(mappedBy = "necropsia", cascade = CascadeType.ALL)
+	private List<ParteNecropsia> partenecropsia;
+	
+	@OneToMany(mappedBy = "necropsia", cascade = CascadeType.ALL)
+	private List<ExameHistopatologico> examesHistopatologicos;
+	
+	
+	@OneToOne(mappedBy = "necropsia", cascade = CascadeType.ALL)
+	private Laudo laudo;
 	
 	public Necropsia() {
 		super();
+	}
+
+	public Necropsia(Date DataHoraNecropsia, EstadoDeConservacao estado, String tipoMorte) {
+		this.DataHoraNecropsia = DataHoraNecropsia;
+		this.estado = estado;
+		this.tipoMorte = tipoMorte;
 	}
 
 	public long getId() {
@@ -29,11 +47,11 @@ public class Necropsia {
 	}
 
 	public Date getDataHoraNecropsia() {
-		return dataHoraNecropsia;
+		return DataHoraNecropsia;
 	}
 
-	public void setDataHoraNecropsia(Date dataHoraNecropsia) {
-		this.dataHoraNecropsia = dataHoraNecropsia;
+	public void setDataHoraNecropsia(Date DataHoraNecropsia) {
+		this.DataHoraNecropsia = DataHoraNecropsia;
 	}
 
 	public String getTipoMorte() {
@@ -44,12 +62,36 @@ public class Necropsia {
 		this.tipoMorte = tipoMorte;
 	}
 
-	public EstadoConserv getEstado() {
+	public EstadoDeConservacao getEstado() {
 		return estado;
 	}
 
-	public void setEstado(EstadoConserv estado) {
+	public void setEstado(EstadoDeConservacao estado) {
 		this.estado = estado;
+	}
+
+	public List<ParteNecropsia> getPartenecropsia() {
+		return partenecropsia;
+	}
+
+	public void setPartenecropsia(List<ParteNecropsia> partenecropsia) {
+		this.partenecropsia = partenecropsia;
+	}
+
+	public List<ExameHistopatologico> getExamesHistopatologicos() {
+		return examesHistopatologicos;
+	}
+
+	public void setExamesHistopatologicos(List<ExameHistopatologico> examesHistopatologicos) {
+		this.examesHistopatologicos = examesHistopatologicos;
+	}
+
+	public Laudo getLaudo() {
+		return laudo;
+	}
+
+	public void setLaudo(Laudo laudo) {
+		this.laudo = laudo;
 	}
 	
 	
