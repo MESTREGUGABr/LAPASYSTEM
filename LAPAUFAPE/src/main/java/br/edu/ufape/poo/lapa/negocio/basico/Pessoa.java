@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table( name = "pessoa")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa {
 	

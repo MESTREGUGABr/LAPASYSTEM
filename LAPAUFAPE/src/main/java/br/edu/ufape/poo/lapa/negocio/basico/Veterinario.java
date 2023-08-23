@@ -3,12 +3,9 @@ package br.edu.ufape.poo.lapa.negocio.basico;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name= "veterinario")
 public class Veterinario extends Pessoa{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+
 	
 	private String crmv;
 	private String instituicao;
@@ -19,13 +16,6 @@ public class Veterinario extends Pessoa{
 		this.instituicao = instituicao;
 	}
 	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 	
 	public String getCrmv() {
 		return crmv;

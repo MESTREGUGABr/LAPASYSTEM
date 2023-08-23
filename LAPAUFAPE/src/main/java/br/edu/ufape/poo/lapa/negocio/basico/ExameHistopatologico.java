@@ -5,17 +5,14 @@ import java.util.Date;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="exameHistopatologico")
-public class ExameHistopatologico extends Necropsia{
+public class ExameHistopatologico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@OneToOne
+	@ManyToOne
 	private Orgao orgao;
 	
-	@ManyToOne  
-	private Necropsia necropsia;
 	
 	public long getId() {
 		return id;
@@ -28,6 +25,17 @@ public class ExameHistopatologico extends Necropsia{
 	public ExameHistopatologico(Date DataHoraNecropsia) {
 		super();
 	}
+
+	public Orgao getOrgao() {
+		return orgao;
+	}
+
+	public void setOrgao(Orgao orgao) {
+		this.orgao = orgao;
+	}
 	
 	
 }
+	
+	
+

@@ -10,21 +10,23 @@ public class Laudo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private Patologista patologisa;
+	@ManyToOne
 	private Tutor tutorsolicitante;
 	
-	@OneToOne(mappedBy = "laudo", cascade = CascadeType.ALL)
+	@OneToOne( cascade = CascadeType.ALL)
 	private Necropsia necropsia;
-	
-	@OneToOne(mappedBy = "laudo", cascade = CascadeType.ALL)
+
+
+	@OneToOne( cascade = CascadeType.ALL)
 	private Animal animal;
-	
-    @OneToOne(mappedBy = "laudo", cascade = CascadeType.ALL)
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Patologista patologista;
+
 	
-	public Laudo(Patologista patologisa, Tutor tutorsolicitante) {
+	public Laudo(Patologista patologista, Tutor tutorsolicitante) {
 		super();
-		this.patologisa = patologisa;
+		this.patologista = patologista;
 		this.tutorsolicitante = tutorsolicitante;
 	}
 	
@@ -34,12 +36,7 @@ public class Laudo {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Patologista getPatologisa() {
-		return patologisa;
-	}
-	public void setPatologisa(Patologista patologisa) {
-		this.patologisa = patologisa;
-	}
+
 	public Tutor getTutorsolicitante() {
 		return tutorsolicitante;
 	}

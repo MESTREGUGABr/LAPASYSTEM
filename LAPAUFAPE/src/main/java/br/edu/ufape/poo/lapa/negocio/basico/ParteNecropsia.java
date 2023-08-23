@@ -4,19 +4,27 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name="partenecropsia")
 public class ParteNecropsia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	private String avaliacao;
+	@ManyToOne
+	private Orgao orgao;
 	
-	@OneToMany(mappedBy = "area", cascade = CascadeType.ALL)
-	private Area area;
 	
-	@OneToMany(mappedBy = "partenecropsia", cascade = CascadeType.ALL)
-	private Necropsia necropsia;
-	
+		
+	public Orgao getOrgao() {
+		return orgao;
+	}
+
+
+	public void setOrgao(Orgao orgao) {
+		this.orgao = orgao;
+	}
+
+
 	public long getId() {
 		return id;
 	}
@@ -32,8 +40,7 @@ public class ParteNecropsia {
 		this.id = id;
 	}
 
-	private String avaliacao;
-	
+
 	public ParteNecropsia() {
 		super();
 	}
@@ -46,5 +53,7 @@ public class ParteNecropsia {
 	public void setAvaliacao(String avaliacao) {
 		this.avaliacao = avaliacao;
 	}
+	
+	
 
 }

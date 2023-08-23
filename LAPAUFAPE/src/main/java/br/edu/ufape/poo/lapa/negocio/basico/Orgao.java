@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 
 @Entity
-@Table(name = "Orgao")
 public class Orgao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +11,9 @@ public class Orgao {
 	private String descricao;
 	
 	@ManyToOne
+	@JoinColumn(name = "area_id")
 	private Area area;
-	
-	@OneToOne(mappedBy = "Orgao", cascade = CascadeType.ALL) 
-	private ExameHistopatologico exame;
-	
+
 	public long getId() {
 		return id;
 	}
@@ -42,4 +39,13 @@ public class Orgao {
 		this.descricao = descricao;
 	}
 
+	public Area getArea() {
+		return area;
+	}
+
+	public void setArea(Area area) {
+		this.area = area;
+	}
+
+	
 }

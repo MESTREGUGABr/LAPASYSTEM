@@ -29,8 +29,6 @@ public class Animal {
 	private float peso;
 	private Date dataHoraObito;
 	
-	@OneToOne
-	private Laudo laudo;
 	
 	public Animal(String nome, Tutor tutor, String porte, int score, float medidas, String rghv, int idade,
 			Especie especie, Sexo sexo, float peso, Date dataHoraObito) {
@@ -121,15 +119,7 @@ public class Animal {
 		this.dataHoraObito = dataHoraObito;
 	}
 
-	public Laudo getLaudo() {
-		return laudo;
-	}
 
-	public void setLaudo(Laudo laudo) {
-		this.laudo = laudo;
-	}
-	
-	
 	
 	
 }

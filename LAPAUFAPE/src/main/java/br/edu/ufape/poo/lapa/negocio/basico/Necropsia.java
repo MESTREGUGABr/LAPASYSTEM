@@ -7,7 +7,6 @@ import br.edu.ufape.poo.lapa.negocio.basico.Enum.EstadoDeConservacao;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="necropsia")
 public class Necropsia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,18 +14,16 @@ public class Necropsia {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date DataHoraNecropsia;
+	
 	private EstadoDeConservacao estado;
 	private String tipoMorte;
 	
-	@OneToMany(mappedBy = "necropsia", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<ParteNecropsia> partenecropsia;
 	
-	@OneToMany(mappedBy = "necropsia", cascade = CascadeType.ALL)
+	@OneToMany( cascade = CascadeType.ALL)
 	private List<ExameHistopatologico> examesHistopatologicos;
 	
-	
-	@OneToOne(mappedBy = "necropsia", cascade = CascadeType.ALL)
-	private Laudo laudo;
 	
 	public Necropsia() {
 		super();
@@ -86,15 +83,5 @@ public class Necropsia {
 		this.examesHistopatologicos = examesHistopatologicos;
 	}
 
-	public Laudo getLaudo() {
-		return laudo;
-	}
-
-	public void setLaudo(Laudo laudo) {
-		this.laudo = laudo;
-	}
-	
-	
-	
 	
 }
