@@ -12,47 +12,47 @@ import br.edu.ufape.poo.lapa.dados.InterfaceColecaoTutor;
 import br.edu.ufape.poo.lapa.negocio.basico.Tutor;
 
 @Service
-public class CadastroTutor {
+public class CadastroTutor implements InterfaceCadastroTutor{
 	@Autowired
 	private InterfaceColecaoTutor colecaoTutor;
 
-	public <S extends Tutor> S save(S entity) {
+	@Override
+	public <S extends Tutor> S salvarTutor(S entity) {
 		return colecaoTutor.save(entity);
 	}
-
-	public List<Tutor> findAll(Sort sort) {
-		return colecaoTutor.findAll(sort);
-	}
-
-	public List<Tutor> findAll() {
+	
+	@Override
+	public List<Tutor> procurarTodosOsTutores() {
 		return colecaoTutor.findAll();
 	}
 
-	public Optional<Tutor> findById(Long id) {
+	@Override
+	public Optional<Tutor> procurarTutorPorId(Long id) {
 		return colecaoTutor.findById(id);
 	}
 
-	public boolean existsById(Long id) {
+	@Override
+	public boolean tutorExistePorId(Long id) {
 		return colecaoTutor.existsById(id);
 	}
 
-	public <S extends Tutor> boolean exists(Example<S> example) {
+	@Override
+	public <S extends Tutor> boolean tutorExiste(Example<S> example) {
 		return colecaoTutor.exists(example);
 	}
 
-	public long count() {
+	@Override
+	public long contarTutores() {
 		return colecaoTutor.count();
 	}
 
-	public void deleteById(Long id) {
+	@Override
+	public void deletarTutorPorId(Long id) {
 		colecaoTutor.deleteById(id);
 	}
 
-	public Tutor getById(Long id) {
-		return colecaoTutor.getById(id);
-	}
-
-	public void delete(Tutor entity) {
+	@Override
+	public void deletarTutor(Tutor entity) {
 		colecaoTutor.delete(entity);
 	}
 

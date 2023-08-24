@@ -10,33 +10,39 @@ import br.edu.ufape.poo.lapa.dados.InterfaceColecaoVeterinario;
 import br.edu.ufape.poo.lapa.negocio.basico.Veterinario;
 
 @Service
-public class CadastroVeterinario {
+public class CadastroVeterinario implements InterfaceCadastroVeterinario {
 	@Autowired
 	private InterfaceColecaoVeterinario colecaoVeterinario;
 
-	public <S extends Veterinario> S save(S entity) {
+	@Override
+	public <S extends Veterinario> S SalvarVeterinario(S entity) {
 		return colecaoVeterinario.save(entity);
 	}
 
-	public List<Veterinario> findAll() {
+	public List<Veterinario> acharTodosOsVeterinarios() {
 		return colecaoVeterinario.findAll();
 	}
 
-	public Optional<Veterinario> findById(Long id) {
+	@Override
+	public Optional<Veterinario> procurarVeterinarioPorID(Long id) {
 		return colecaoVeterinario.findById(id);
 	}
 
-	public boolean existsById(Long id) {
+	@Override
+	public boolean tutorExistePorId(Long id) {
 		return colecaoVeterinario.existsById(id);
 	}
 
-	public long count() {
+	@Override
+	public long contarVeterinarios() {
 		return colecaoVeterinario.count();
 	}
 
-	public void deleteById(Long id) {
+	@Override
+	public void deletarVeterinarioPorId(Long id) {
 		colecaoVeterinario.deleteById(id);
 	}
+
 	
 	
 }

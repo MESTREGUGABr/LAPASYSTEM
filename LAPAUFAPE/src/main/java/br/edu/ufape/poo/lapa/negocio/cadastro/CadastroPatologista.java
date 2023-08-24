@@ -9,35 +9,38 @@ import br.edu.ufape.poo.lapa.dados.InterfaceColecaoPatologista;
 import br.edu.ufape.poo.lapa.negocio.basico.Patologista;
 
 @Service
-public class CadastroPatologista {
+public class CadastroPatologista implements InterfaceCadastroPatologista {
 	@Autowired
 	private InterfaceColecaoPatologista colecaoPatologista;
 
-	public <S extends Patologista> S save(S entity) {
+	@Override
+	public <S extends Patologista> S salvarPatologista(S entity) {
 		return colecaoPatologista.save(entity);
 	}
 
-	public Optional<Patologista> findById(Long id) {
+	@Override
+	public Optional<Patologista> procurarPatologistaPorId(Long id) {
 		return colecaoPatologista.findById(id);
 	}
 
-	public boolean existsById(Long id) {
+	@Override
+	public boolean patologistaexistePorId(Long id) {
 		return colecaoPatologista.existsById(id);
 	}
 
-	public long count() {
+	@Override
+	public long contarPatologista() {
 		return colecaoPatologista.count();
 	}
 
-	public void deleteById(Long id) {
+	@Override
+	public void deletarPatologistaPorId(Long id) {
 		colecaoPatologista.deleteById(id);
 	}
 
-	public Patologista getById(Long id) {
-		return colecaoPatologista.getById(id);
-	}
 
-	public void delete(Patologista entity) {
+	@Override
+	public void deletarPatologista(Patologista entity) {
 		colecaoPatologista.delete(entity);
 	}
 
