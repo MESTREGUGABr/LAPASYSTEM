@@ -7,16 +7,16 @@ import br.edu.ufape.poo.lapa.negocio.basico.Necropsia;
 
 public interface InterfaceCadastroNecropsia {
 
-	<S extends Necropsia> S save(S entity);
+	<S extends Necropsia> S salvarNecropsia(S entity);
 
-	List<Necropsia> findAll();
+	List<Necropsia> encontrarTodasNecropsias();
 
-	Optional<Necropsia> findById(Long id);
+	Optional<Necropsia> encontrarNecropsiasPorId(Long id);
 
-	long count();
+	long contarNecropsias();
 
-	void deleteById(Long id);
+	void deletarNecropsiaPorId(Long id);
 
-	void delete(Necropsia entity);
+	void deletarNecropsia(Necropsia entity);
 
 }

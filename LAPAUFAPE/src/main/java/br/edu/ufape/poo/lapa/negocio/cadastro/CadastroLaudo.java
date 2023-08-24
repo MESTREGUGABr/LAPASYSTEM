@@ -16,32 +16,32 @@ public class CadastroLaudo implements InterfaceCadastroLaudo {
 	private InterfaceColecaoLaudo colecaoLaudo;
 
 	@Override
-	public <S extends Laudo> S save(S entity) {
+	public <S extends Laudo> S salvarLaudo(S entity) {
 		return colecaoLaudo.save(entity);
 	}
 
 	@Override
-	public List<Laudo> findAll() {
+	public List<Laudo> encontrarTodosLaudos() {
 		return colecaoLaudo.findAll();
 	}
 
 	@Override
-	public Optional<Laudo> findById(Long id) {
+	public Optional<Laudo> encontrarLaudoPorId(Long id) {
 		return colecaoLaudo.findById(id);
 	}
 
 	@Override
-	public long count() {
+	public long contarLaudos() {
 		return colecaoLaudo.count();
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deletarLaudoPorId(Long id) {
 		colecaoLaudo.deleteById(id);
 	}
 
 	@Override
-	public void delete(Laudo entity) {
+	public void deletarLaudo(Laudo entity) {
 		colecaoLaudo.delete(entity);
 	}
 	

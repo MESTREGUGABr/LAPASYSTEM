@@ -7,16 +7,16 @@ import br.edu.ufape.poo.lapa.negocio.basico.Laudo;
 
 public interface InterfaceCadastroLaudo {
 
-	<S extends Laudo> S save(S entity);
+	<S extends Laudo> S salvarLaudo(S entity);
 
-	List<Laudo> findAll();
+	List<Laudo> encontrarTodosLaudos();
 
-	Optional<Laudo> findById(Long id);
+	Optional<Laudo> encontrarLaudoPorId(Long id);
 
-	long count();
+	long contarLaudos();
 
-	void deleteById(Long id);
+	void deletarLaudoPorId(Long id);
 
-	void delete(Laudo entity);
+	void deletarLaudo(Laudo entity);
 
 }

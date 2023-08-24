@@ -7,16 +7,16 @@ import br.edu.ufape.poo.lapa.negocio.basico.Area;
 
 public interface InterfaceCadastroArea {
 
-	<S extends Area> S save(S entity);
+	<S extends Area> S salvarArea(S entity);
 
-	List<Area> findAll();
+	List<Area> encontrarTodasAreas();
 
-	Optional<Area> findById(Long id);
+	Optional<Area> encontrarAreaPorId(Long id);
 
-	long count();
+	long contarAreas();
 
-	void deleteById(Long id);
+	void deletarAreaPorId(Long id);
 
-	void delete(Area entity);
+	void deletarArea (Area entity);
 
 }

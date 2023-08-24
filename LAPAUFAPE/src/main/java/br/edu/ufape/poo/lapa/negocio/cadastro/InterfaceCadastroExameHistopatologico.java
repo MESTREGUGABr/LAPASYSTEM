@@ -7,16 +7,16 @@ import br.edu.ufape.poo.lapa.negocio.basico.ExameHistopatologico;
 
 public interface InterfaceCadastroExameHistopatologico {
 
-	<S extends ExameHistopatologico> S save(S entity);
+	<S extends ExameHistopatologico> S salvarExameHistopatologico(S entity);
 
-	List<ExameHistopatologico> findAll();
+	List<ExameHistopatologico> encontrarTodosExamesHistopatologicos();
 
-	Optional<ExameHistopatologico> findById(Long id);
+	Optional<ExameHistopatologico> encontrarExameHistopatologicoPorId(Long id);
 
-	long count();
+	long contarExamesHistopatologicos();
 
-	void deleteById(Long id);
+	void deletarExameHistopatologicoPorId(Long id);
 
-	void deleteAll();
+	void deletarTodosExamesHistopatologicos();
 
 }

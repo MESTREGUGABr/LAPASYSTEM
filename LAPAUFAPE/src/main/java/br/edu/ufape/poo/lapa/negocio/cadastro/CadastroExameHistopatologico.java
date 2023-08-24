@@ -16,32 +16,32 @@ public class CadastroExameHistopatologico implements InterfaceCadastroExameHisto
 	private InterfaceColecaoExameHistopatologico exameHistopatologico;
 
 	@Override
-	public <S extends ExameHistopatologico> S save(S entity) {
+	public <S extends ExameHistopatologico> S salvarExameHistopatologico(S entity) {
 		return exameHistopatologico.save(entity);
 	}
 
 	@Override
-	public List<ExameHistopatologico> findAll() {
+	public List<ExameHistopatologico> encontrarTodosExamesHistopatologicos() {
 		return exameHistopatologico.findAll();
 	}
 
 	@Override
-	public Optional<ExameHistopatologico> findById(Long id) {
+	public Optional<ExameHistopatologico> encontrarExameHistopatologicoPorId(Long id) {
 		return exameHistopatologico.findById(id);
 	}
 
 	@Override
-	public long count() {
+	public long contarExamesHistopatologicos() {
 		return exameHistopatologico.count();
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deletarExameHistopatologicoPorId(Long id) {
 		exameHistopatologico.deleteById(id);
 	}
 
 	@Override
-	public void deleteAll() {
+	public void deletarTodosExamesHistopatologicos() {
 		exameHistopatologico.deleteAll();
 	}
 	

@@ -16,32 +16,32 @@ public class CadastroParteNecreopsia implements InterfaceCadastroParteNecropsia 
 	private InterfaceColecaoParteNecropsia parteNecropsia;
 
 	@Override
-	public <S extends ParteNecropsia> S save(S entity) {
+	public <S extends ParteNecropsia> S salvarParteNecropsia(S entity) {
 		return parteNecropsia.save(entity);
 	}
 
 	@Override
-	public List<ParteNecropsia> findAll() {
+	public List<ParteNecropsia> encontrarTodasPartesNecropsias() {
 		return parteNecropsia.findAll();
 	}
 
 	@Override
-	public Optional<ParteNecropsia> findById(Long id) {
+	public Optional<ParteNecropsia> encontrarParteNecropsiaPorId(Long id) {
 		return parteNecropsia.findById(id);
 	}
 
 	@Override
-	public long count() {
+	public long contarPartesNecropsias() {
 		return parteNecropsia.count();
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deletarParteNecropsiaPorId(Long id) {
 		parteNecropsia.deleteById(id);
 	}
 
 	@Override
-	public void delete(ParteNecropsia entity) {
+	public void deletarParteNecropsia(ParteNecropsia entity) {
 		parteNecropsia.delete(entity);
 	}
 	

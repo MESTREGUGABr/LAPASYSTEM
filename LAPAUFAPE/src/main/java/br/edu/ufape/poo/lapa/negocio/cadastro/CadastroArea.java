@@ -16,32 +16,32 @@ public class CadastroArea implements InterfaceCadastroArea {
 	private InterfaceColecaoArea colecaoArea;
 
 	@Override
-	public <S extends Area> S save(S entity) {
+	public <S extends Area> S salvarArea(S entity) {
 		return colecaoArea.save(entity);
 	}
 
 	@Override
-	public List<Area> findAll() {
+	public List<Area> encontrarTodasAreas() {
 		return colecaoArea.findAll();
 	}
 
 	@Override
-	public Optional<Area> findById(Long id) {
+	public Optional<Area> encontrarAreaPorId(Long id) {
 		return colecaoArea.findById(id);
 	}
 
 	@Override
-	public long count() {
+	public long contarAreas() {
 		return colecaoArea.count();
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deletarAreaPorId(Long id) {
 		colecaoArea.deleteById(id);
 	}
 
 	@Override
-	public void delete(Area entity) {
+	public void deletarArea(Area entity) {
 		colecaoArea.delete(entity);
 	}
 	

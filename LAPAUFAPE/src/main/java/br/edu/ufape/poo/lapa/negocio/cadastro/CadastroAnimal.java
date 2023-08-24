@@ -16,32 +16,32 @@ public class CadastroAnimal implements InterfaceCadastroAnimal {
 	private InterfaceColecaoAnimal colecaoAnimal;
 
 	@Override
-	public <S extends Animal> S save(S entity) {
+	public <S extends Animal> S salvarAnimal(S entity) {
 		return colecaoAnimal.save(entity);
 	}
 
 	@Override
-	public List<Animal> findAll() {
+	public List<Animal> encontrarTodosAnimais() {
 		return colecaoAnimal.findAll();
 	}
 
 	@Override
-	public Optional<Animal> findById(Long id) {
+	public Optional<Animal> encontrarAnimalPorId(Long id) {
 		return colecaoAnimal.findById(id);
 	}
 
 	@Override
-	public long count() {
+	public long contarAnimais() {
 		return colecaoAnimal.count();
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deletarAnimaisPorId(Long id) {
 		colecaoAnimal.deleteById(id);
 	}
 
 	@Override
-	public void delete(Animal entity) {
+	public void deletarAnimal(Animal entity) {
 		colecaoAnimal.delete(entity);
 	}
 	

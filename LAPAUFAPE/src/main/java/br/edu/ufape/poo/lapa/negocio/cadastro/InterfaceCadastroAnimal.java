@@ -7,16 +7,16 @@ import br.edu.ufape.poo.lapa.negocio.basico.Animal;
 
 public interface InterfaceCadastroAnimal {
 
-	<S extends Animal> S save(S entity);
+	<S extends Animal> S salvarAnimal(S entity);
 
-	List<Animal> findAll();
+	List<Animal> encontrarTodosAnimais();
 
-	Optional<Animal> findById(Long id);
+	Optional<Animal> encontrarAnimalPorId(Long id);
 
-	long count();
+	long contarAnimais();
 
-	void deleteById(Long id);
+	void deletarAnimaisPorId(Long id);
 
-	void delete(Animal entity);
+	void deletarAnimal(Animal entity);
 
 }
