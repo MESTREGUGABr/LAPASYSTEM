@@ -29,7 +29,10 @@ public class Animal {
 	private float peso;
 	private Date dataHoraObito;
 	
-	
+	public Animal() {
+		super();
+	}
+
 	public Animal(String nome, Tutor tutor, String porte, int score, float medidas, String rghv, int idade,
 			Especie especie, Sexo sexo, float peso, Date dataHoraObito) {
 		super();
@@ -118,8 +121,5 @@ public class Animal {
 	public void setDataHoraObito(Date dataHoraObito) {
 		this.dataHoraObito = dataHoraObito;
 	}
-
-
-	
 	
 }

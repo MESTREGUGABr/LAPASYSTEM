@@ -22,13 +22,16 @@ public class Laudo {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Patologista patologista;
-
 	
-	public Laudo(Patologista patologista, Tutor tutorsolicitante) {
+	public Laudo(Animal animal, Necropsia necropsia, Patologista patologista, Tutor tutor) {
 		super();
-		this.patologista = patologista;
-		this.tutorsolicitante = tutorsolicitante;
 	}
+
+//	public Laudo(Patologista patologista, Tutor tutorsolicitante) {
+//		super();
+//		this.patologista = patologista;
+//		this.tutorsolicitante = tutorsolicitante;
+//	}
 	
 	public long getId() {
 		return id;
@@ -43,8 +46,30 @@ public class Laudo {
 	public void setTutorsolicitante(Tutor tutorsolicitante) {
 		this.tutorsolicitante = tutorsolicitante;
 	}
-	
-	
+
+	public Necropsia getNecropsia() {
+		return necropsia;
+	}
+
+	public void setNecropsia(Necropsia necropsia) {
+		this.necropsia = necropsia;
+	}
+
+	public Animal getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
+	}
+
+	public Patologista getPatologista() {
+		return patologista;
+	}
+
+	public void setPatologista(Patologista patologista) {
+		this.patologista = patologista;
+	}
 	
 	
 }

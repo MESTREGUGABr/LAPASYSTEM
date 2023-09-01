@@ -87,10 +87,10 @@ public class InterfaceColecaoTutorTeste {
 
         Tutor tutorEncontrado = tutorOptional.get();
 
-        System.out.println("ID: " + tutorEncontrado.getId());
-        System.out.println("Nome: " + tutorEncontrado.getNome());
-        System.out.println("Email: " + tutorEncontrado.getEmail());
-        System.out.println("Telefone: " + tutorEncontrado.getTelefone());
+//        System.out.println("ID: " + tutorEncontrado.getId());
+//        System.out.println("Nome: " + tutorEncontrado.getNome());
+//        System.out.println("Email: " + tutorEncontrado.getEmail());
+//        System.out.println("Telefone: " + tutorEncontrado.getTelefone());
 
         assertEquals(tutorIdExistente, tutorEncontrado.getId());
     }
