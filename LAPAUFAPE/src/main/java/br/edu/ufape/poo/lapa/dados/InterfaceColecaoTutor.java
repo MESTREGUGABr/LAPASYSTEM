@@ -7,5 +7,7 @@ import br.edu.ufape.poo.lapa.negocio.basico.Tutor;
 
 @Repository
 public interface InterfaceColecaoTutor extends JpaRepository<Tutor, Long>{
+	
+	public Tutor findByEmail(String email);
 
 }

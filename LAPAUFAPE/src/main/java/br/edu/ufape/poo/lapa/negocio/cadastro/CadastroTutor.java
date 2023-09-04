@@ -10,16 +10,30 @@ import org.springframework.stereotype.Service;
 
 import br.edu.ufape.poo.lapa.dados.InterfaceColecaoTutor;
 import br.edu.ufape.poo.lapa.negocio.basico.Tutor;
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.TutorNaoExisteException;
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.UsuarioDuplicadoException;
 
 @Service
 public class CadastroTutor implements InterfaceCadastroTutor{
 	@Autowired
 	private InterfaceColecaoTutor colecaoTutor;
 
+
 	@Override
-	public <S extends Tutor> S salvarTutor(S entity) {
+	public Optional<Tutor> procurarUsuarioEmail(String email){
+		return Optional.of(colecaoTutor.findByEmail(email));
+	}
+	
+	@Override
+	public <S extends Tutor> S salvarTutor(S entity) throws UsuarioDuplicadoException {
+	    Optional<Tutor> existingTutor = procurarUsuarioEmail(entity.getEmail());
+		if (existingTutor.isPresent()) {
+		    throw new UsuarioDuplicadoException(entity.getEmail());
+		}
+
 		return colecaoTutor.save(entity);
 	}
+
 	
 	@Override
 	public List<Tutor> procurarTodosOsTutores() {

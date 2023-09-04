@@ -6,10 +6,11 @@ import java.util.Optional;
 import org.springframework.data.domain.Example;
 
 import br.edu.ufape.poo.lapa.negocio.basico.Tutor;
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.UsuarioDuplicadoException;
 
 public interface InterfaceCadastroTutor {
 
-	<S extends Tutor> S salvarTutor(S entity);
+	<S extends Tutor> S salvarTutor(S entity) throws UsuarioDuplicadoException;
 
 	List<Tutor> procurarTodosOsTutores();
 
@@ -24,5 +25,7 @@ public interface InterfaceCadastroTutor {
 	void deletarTutorPorId(Long id);
 
 	void deletarTutor(Tutor entity);
+
+	Optional<Tutor> procurarUsuarioEmail(String email);
 
 }
