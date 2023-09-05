@@ -17,8 +17,26 @@ public class CadastroTutor implements InterfaceCadastroTutor{
 	private InterfaceColecaoTutor colecaoTutor;
 
 	@Override
+<<<<<<< Updated upstream
 	public <S extends Tutor> S salvarTutor(S entity) {
 		return colecaoTutor.save(entity);
+=======
+	public Tutor procurarUsuarioEmail(String email){
+		return (colecaoTutor.findByEmail(email));
+	}
+	
+	@Override
+	public Tutor salvarTutor(Tutor entity) throws UsuarioDuplicadoException {
+	    Tutor existingTutor = procurarUsuarioEmail(entity.getEmail());
+	    
+	    // Check if an existing tutor with the same email exists
+	    if (existingTutor != null && existingTutor.getEmail().equals(entity.getEmail())) {
+	        throw new UsuarioDuplicadoException(entity.getEmail());
+	    }
+
+	    // If no duplicate tutor is found, save the new tutor entity
+	    return colecaoTutor.save(entity);
+>>>>>>> Stashed changes
 	}
 	
 	@Override
@@ -27,8 +45,8 @@ public class CadastroTutor implements InterfaceCadastroTutor{
 	}
 
 	@Override
-	public Optional<Tutor> procurarTutorPorId(Long id) {
-		return colecaoTutor.findById(id);
+	public Tutor procurarTutorPorId(Long id) throws TutorNaoExisteException {
+		return colecaoTutor.findById(id).orElse(null);
 	}
 
 	@Override
@@ -48,14 +66,16 @@ public class CadastroTutor implements InterfaceCadastroTutor{
 
 	@Override
 	public void deletarTutorPorId(Long id) {
-		colecaoTutor.deleteById(id);
+		 colecaoTutor.deleteById(id);
 	}
 
+	
 	@Override
 	public void deletarTutor(Tutor entity) {
 		colecaoTutor.delete(entity);
 	}
-
+	
+	//Atualizar Estudante
 	
 }
 

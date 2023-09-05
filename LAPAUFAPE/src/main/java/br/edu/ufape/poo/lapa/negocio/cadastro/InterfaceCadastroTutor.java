@@ -6,6 +6,11 @@ import java.util.Optional;
 import org.springframework.data.domain.Example;
 
 import br.edu.ufape.poo.lapa.negocio.basico.Tutor;
+<<<<<<< Updated upstream
+=======
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.TutorNaoExisteException;
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.UsuarioDuplicadoException;
+>>>>>>> Stashed changes
 
 public interface InterfaceCadastroTutor {
 
@@ -13,7 +18,7 @@ public interface InterfaceCadastroTutor {
 
 	List<Tutor> procurarTodosOsTutores();
 
-	Optional<Tutor> procurarTutorPorId(Long id);
+	Tutor procurarTutorPorId(Long id) throws TutorNaoExisteException;
 
 	boolean tutorExistePorId(Long id);
 
@@ -25,4 +30,9 @@ public interface InterfaceCadastroTutor {
 
 	void deletarTutor(Tutor entity);
 
+<<<<<<< Updated upstream
+=======
+	Tutor procurarUsuarioEmail(String email);
+
+>>>>>>> Stashed changes
 }
