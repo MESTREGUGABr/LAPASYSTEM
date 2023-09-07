@@ -80,6 +80,9 @@ public class Fachada {
 	public List<Veterinario> acharTodosOsVeterinarios() {
 		return cadastroVeterinario.acharTodosOsVeterinarios();
 	}
+	public List<Veterinario> procurarVeterinarioPorNome(String nome)throws VeterinarioNaoExisteException {
+		return cadastroVeterinario.procurarVeterinarioPorNome(nome);
+	}
 
 	public <S extends Tutor> S salvarTutor(S entity) throws UsuarioDuplicadoException {
 		return cadastroTutor.salvarTutor(entity);
@@ -108,6 +111,10 @@ public class Fachada {
 	public void deletarTutor(Tutor entity) {
 		cadastroTutor.deletarTutor(entity);
 	}
+	
+	public List<Tutor> procurarTutorPorNome(String nome)throws TutorNaoExisteException{
+		return cadastroTutor.procurarTutorPorNome(nome);
+	}
 
 	public <S extends Patologista> S salvarPatologista(S entity) throws UsuarioDuplicadoException {
 		return cadastroPatologista.salvarPatologista(entity);
@@ -131,6 +138,10 @@ public class Fachada {
 
 	public void deletarPatologista(Patologista entity) {
 		cadastroPatologista.deletarPatologista(entity);
+	}
+	
+	public List<Patologista> procurarPatologistaPorNome(String nome)throws PatologistaNaoExisteException{
+		return cadastroPatologista.procurarPatologistaPorNome(nome);
 	}
 
 	public <S extends ParteNecropsia> S salvarParteNecropsia(S entity) {
