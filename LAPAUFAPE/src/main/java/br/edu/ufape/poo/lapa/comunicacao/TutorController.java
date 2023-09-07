@@ -37,11 +37,6 @@ public class TutorController {
 	    return fachada.procurarTutorPorId(id);
 	}
 	
-	@GetMapping("/tutor/email/{email}")
-	public Tutor buscarTutorPorEmail(@PathVariable String email){
-		return fachada.procurarUsuarioEmail(email);
-	}
-	
 	@PostMapping("/tutor")
 	public Tutor salvarTutor(@RequestBody Tutor tutor) throws UsuarioDuplicadoException {
 		return fachada.salvarTutor(tutor);

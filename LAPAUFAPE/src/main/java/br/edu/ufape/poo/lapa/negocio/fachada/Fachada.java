@@ -27,8 +27,10 @@ import br.edu.ufape.poo.lapa.negocio.cadastro.InterfaceCadastroParteNecropsia;
 import br.edu.ufape.poo.lapa.negocio.cadastro.InterfaceCadastroPatologista;
 import br.edu.ufape.poo.lapa.negocio.cadastro.InterfaceCadastroTutor;
 import br.edu.ufape.poo.lapa.negocio.cadastro.InterfaceCadastroVeterinario;
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.PatologistaNaoExisteException;
 import br.edu.ufape.poo.lapa.negocio.cadastro.exception.TutorNaoExisteException;
 import br.edu.ufape.poo.lapa.negocio.cadastro.exception.UsuarioDuplicadoException;
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.VeterinarioNaoExisteException;
 
 @Service
 public class Fachada {
@@ -55,16 +57,16 @@ public class Fachada {
 	private InterfaceCadastroAnimal cadastroAnimal;
 	
 
-	public <S extends Veterinario> S SalvarVeterinario(S entity) {
+	public <S extends Veterinario> S SalvarVeterinario(S entity) throws UsuarioDuplicadoException {
 		return cadastroVeterinario.SalvarVeterinario(entity);
 	}
 
-	public Optional<Veterinario> procurarVeterinarioPorID(Long id) {
+	public Optional<Veterinario> procurarVeterinarioPorID(Long id) throws VeterinarioNaoExisteException {
 		return cadastroVeterinario.procurarVeterinarioPorID(id);
 	}
 
 	public boolean tutorExistePorId(Long id) {
-		return cadastroVeterinario.tutorExistePorId(id);
+		return cadastroVeterinario.veterinarioExistePorId(id);
 	}
 
 	public long contarVeterinarios() {
@@ -107,15 +109,11 @@ public class Fachada {
 		cadastroTutor.deletarTutor(entity);
 	}
 
-	public Tutor procurarUsuarioEmail(String email) {
-		return cadastroTutor.procurarUsuarioEmail(email);
-	}
-
-	public <S extends Patologista> S salvarPatologista(S entity) {
+	public <S extends Patologista> S salvarPatologista(S entity) throws UsuarioDuplicadoException {
 		return cadastroPatologista.salvarPatologista(entity);
 	}
 
-	public Optional<Patologista> procurarPatologistaPorId(Long id) {
+	public Optional<Patologista> procurarPatologistaPorId(Long id) throws PatologistaNaoExisteException {
 		return cadastroPatologista.procurarPatologistaPorId(id);
 	}
 

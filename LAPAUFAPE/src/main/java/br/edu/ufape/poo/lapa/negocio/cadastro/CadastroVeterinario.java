@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ufape.poo.lapa.dados.InterfaceColecaoVeterinario;
+import br.edu.ufape.poo.lapa.negocio.basico.Tutor;
 import br.edu.ufape.poo.lapa.negocio.basico.Veterinario;
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.TutorNaoExisteException;
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.UsuarioDuplicadoException;
+import br.edu.ufape.poo.lapa.negocio.cadastro.exception.VeterinarioNaoExisteException;
 
 @Service
 public class CadastroVeterinario implements InterfaceCadastroVeterinario {
@@ -15,8 +19,13 @@ public class CadastroVeterinario implements InterfaceCadastroVeterinario {
 	private InterfaceColecaoVeterinario colecaoVeterinario;
 
 	@Override
-	public <S extends Veterinario> S SalvarVeterinario(S entity) {
-		return colecaoVeterinario.save(entity);
+	public <S extends Veterinario> S SalvarVeterinario(S entity) throws UsuarioDuplicadoException {
+	
+		if (colecaoVeterinario.findByEmail(entity.getEmail()) != null) {
+            throw new UsuarioDuplicadoException(entity.getEmail());
+        }
+        
+        return colecaoVeterinario.save(entity);
 	}
 
 	public List<Veterinario> acharTodosOsVeterinarios() {
@@ -24,12 +33,19 @@ public class CadastroVeterinario implements InterfaceCadastroVeterinario {
 	}
 
 	@Override
-	public Optional<Veterinario> procurarVeterinarioPorID(Long id) {
-		return colecaoVeterinario.findById(id);
-	}
+    public Optional<Veterinario> procurarVeterinarioPorID(Long id) throws VeterinarioNaoExisteException {
+        Optional<Veterinario> veterinarioOptional = colecaoVeterinario.findById(id);
+
+        if (veterinarioOptional.isPresent()) {
+            return veterinarioOptional;
+        } else {
+            throw new VeterinarioNaoExisteException("Não existe veterinário com o ID informado: " + id);
+        }
+    }
+	
 
 	@Override
-	public boolean tutorExistePorId(Long id) {
+	public boolean veterinarioExistePorId(Long id) {
 		return colecaoVeterinario.existsById(id);
 	}
 
@@ -41,6 +57,16 @@ public class CadastroVeterinario implements InterfaceCadastroVeterinario {
 	@Override
 	public void deletarVeterinarioPorId(Long id) {
 		colecaoVeterinario.deleteById(id);
+	}
+
+	@Override
+	public List<Veterinario> procurarVeterinarioPorNome(String nome) throws VeterinarioNaoExisteException {
+		List<Veterinario> veterinario = colecaoVeterinario.findByNome(nome);
+        if (!veterinario.isEmpty()) {
+            return veterinario;
+        } else {
+            throw new VeterinarioNaoExisteException("Veterinario não encontrado com o nome: " + nome);
+        }
 	}
 
 	

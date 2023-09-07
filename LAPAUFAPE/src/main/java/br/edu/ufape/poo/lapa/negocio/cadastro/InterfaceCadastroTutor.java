@@ -27,7 +27,7 @@ public interface InterfaceCadastroTutor {
 	void deletarTutorPorId(Long id);
 
 	void deletarTutor(Tutor entity);
-
-	Tutor procurarUsuarioEmail(String email);
+	
+	List<Tutor> procurarTutorPorNome(String nome)throws TutorNaoExisteException;
 
 }
