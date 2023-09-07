@@ -19,17 +19,14 @@ public class CadastroTutor implements InterfaceCadastroTutor{
 	private InterfaceColecaoTutor colecaoTutor;
 	
 	@Override
-	public Tutor salvarTutor(Tutor entity) throws UsuarioDuplicadoException {
-	    Tutor existingTutor = procurarUsuarioEmail(entity.getEmail());
-	    
-	    // Check if an existing tutor with the same email exists
-	    if (existingTutor != null && existingTutor.getEmail().equals(entity.getEmail())) {
-	        throw new UsuarioDuplicadoException(entity.getEmail());
-	    }
+    public <S extends Tutor> S salvarTutor(S entity) throws UsuarioDuplicadoException {
 
-	    // If no duplicate tutor is found, save the new tutor entity
-	    return colecaoTutor.save(entity);
-	}
+        if (colecaoTutor.findByEmail(entity.getEmail()) != null) {
+            throw new UsuarioDuplicadoException(entity.getEmail());
+        }
+        
+        return colecaoTutor.save(entity);
+    }
 	
 	@Override
 	public List<Tutor> procurarTodosOsTutores() {
@@ -37,9 +34,14 @@ public class CadastroTutor implements InterfaceCadastroTutor{
 	}
 
 	@Override
-	public Tutor procurarTutorPorId(Long id) throws TutorNaoExisteException {
-		return colecaoTutor.findById(id).orElse(null);
-	}
+    public Tutor procurarTutorPorId(Long id) throws TutorNaoExisteException {
+        Optional<Tutor> tutorOptional = colecaoTutor.findById(id);
+        if (tutorOptional.isPresent()) {
+            return tutorOptional.get();
+        } else {
+            throw new TutorNaoExisteException("Tutor não encontrado com o ID: " + id);
+        }
+    }
 
 	@Override
 	public boolean tutorExistePorId(Long id) {
@@ -68,10 +70,13 @@ public class CadastroTutor implements InterfaceCadastroTutor{
 	}
 
 	@Override
-	public Tutor procurarUsuarioEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+    public List<Tutor> procurarTutorPorNome(String nome) throws TutorNaoExisteException {
+        List<Tutor> tutores = colecaoTutor.findByNome(nome);
+        if (!tutores.isEmpty()) {
+            return tutores;
+        } else {
+            throw new TutorNaoExisteException("Tutor não encontrado com o nome: " + nome);
+        }
+    }
 	
 }
